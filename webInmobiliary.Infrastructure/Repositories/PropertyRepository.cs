@@ -44,7 +44,9 @@ public class PropertyRepository : IPropertyRepository
 
     public async Task<bool> DeleteProperty(int id)
     {
-        _appDbContext.Remove(id);
+        var deleted = await _appDbContext.Properties.FindAsync(id);
+        if (deleted == null) return false;
+        _appDbContext.Properties.Remove(deleted);
         await _appDbContext.SaveChangesAsync();
         return true;
     }
