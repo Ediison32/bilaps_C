@@ -39,9 +39,22 @@ public class PropertyRepository : IPropertyRepository
 
     public async Task<Property> UpdateProperty(Property property)
     {
-        throw new NotImplementedException();
-    }
+        var existing = await _appDbContext.Properties.FindAsync(property.Id);
 
+        if (existing == null)
+            return null!; // o lanzar una excepción si así manejas errores
+        
+        existing.Title = property.Title;
+        existing.Description = property.Description;
+        existing.Price = property.Price;
+        existing.Location = property.Location;
+        existing.ImageUrls = property.ImageUrls;
+        existing.AdminId = property.AdminId;
+
+        await _appDbContext.SaveChangesAsync();
+
+        return existing;
+    }
     public async Task<bool> DeleteProperty(int id)
     {
         var deleted = await _appDbContext.Properties.FindAsync(id);
