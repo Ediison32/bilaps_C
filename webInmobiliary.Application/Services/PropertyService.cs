@@ -27,7 +27,7 @@ public class PropertyService : IPropertyService
             Description = p.Description,
             Location = p.Location,
             Price = p.Price,
-            ImageUrls = p.ImageUrls,
+            // ImageUrls = p.Images.,
             Title = p.Title,
             Admin = p.Admin
         });
@@ -42,7 +42,7 @@ public class PropertyService : IPropertyService
             Description = propert.Description,
             Location = propert.Location,
             Price = propert.Price,
-            ImageUrls = propert.ImageUrls,
+            // ImageUrls = propert.ImageUrls,
             Title = propert.Title,
             Admin =propert.Admin
         };
@@ -55,7 +55,7 @@ public class PropertyService : IPropertyService
             Description = propertyCreateDto.Description,
             Location = propertyCreateDto.Location,
             Price = propertyCreateDto.Price,
-            ImageUrls = propertyCreateDto.ImageUrls,
+            // ImageUrls = propertyCreateDto.ImageUrls,
             Title = propertyCreateDto.Title,
             Admin = propertyCreateDto.Admin
             
@@ -68,7 +68,7 @@ public class PropertyService : IPropertyService
             Description = newPropert.Description,
             Location = newPropert.Location,
             Price = newPropert.Price,
-            ImageUrls = newPropert.ImageUrls,
+            // ImageUrls = newPropert.ImageUrls,
             Title = newPropert.Title,
             Admin = newPropert.Admin
         };
@@ -83,7 +83,7 @@ public class PropertyService : IPropertyService
         result.Description = propertyUpdateDto.Description;
         result.Price = propertyUpdateDto.Price;
         result.Location = propertyUpdateDto.Location;
-        result.ImageUrls = propertyUpdateDto.ImageUrls;
+        // result.ImageUrls = propertyUpdateDto.ImageUrls;
         result.Admin = propertyUpdateDto.Admin;
 
         await _propertyRepository.UpdateProperty(result);
@@ -95,7 +95,7 @@ public class PropertyService : IPropertyService
             Description = result.Description,
             Price = result.Price,
             Location = result.Location,
-            ImageUrls = result.ImageUrls,
+            // ImageUrls = result.ImageUrls,
             Admin = result.Admin
 
         };

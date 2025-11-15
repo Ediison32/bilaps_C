@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using webInmobiliary.Application.Dto;
 using webInmobiliary.Application.Interfaces;
@@ -14,7 +15,8 @@ public class PropertyControlle : ControllerBase
     {
         _propertyService = propertyService;
     }
-
+    
+    [Authorize(Roles = "Admin")]
     [HttpGet("GetAll")]
     public async Task<IActionResult> GetAllProperty()
     {
@@ -45,7 +47,7 @@ public class PropertyControlle : ControllerBase
             return BadRequest(new { message = ex.Message });
         }
     }
-
+    [Authorize(Roles = "Admin")]
     [HttpDelete("{id}")]
     public async Task<IActionResult> DeleteProperty(int id)
                       
@@ -61,7 +63,7 @@ public class PropertyControlle : ControllerBase
         }
     }
 
-  
+    [Authorize(Roles = "Admin")]
     [HttpPost("Create")]
     public async Task<IActionResult> CreateProperty([FromBody] PropertyCreateDto dto)
     {
@@ -76,7 +78,7 @@ public class PropertyControlle : ControllerBase
             return BadRequest(new { message = ex.Message });
         }
     }
-    
+    [Authorize(Roles = "Admin")]
     [HttpPut("{id}")]
     public async Task<IActionResult> UpdateProperty(int id, [FromBody] PropertyUpdateDto dto)
     {

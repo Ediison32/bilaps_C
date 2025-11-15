@@ -48,7 +48,7 @@ public class PropertyRepository : IPropertyRepository
         existing.Description = property.Description;
         existing.Price = property.Price;
         existing.Location = property.Location;
-        existing.ImageUrls = property.ImageUrls;
+        // existing.ImageUrls = property.ImageUrls;
         existing.AdminId = property.AdminId;
 
         await _appDbContext.SaveChangesAsync();
