@@ -322,5 +322,13 @@ Paquete de nivel superior                              Solicitado   Resuelto
 > Pomelo.EntityFrameworkCore.MySql                     8.0.0        8.0.0   
 > System.IdentityModel.Tokens.Jwt                      7.5.1        7.5.1
 
+# Mostar todas las libreirar y verisones que se aplican en el proyecto 
+    - dotnet list package
 
-// dotnet list package
+# Cloudinary 
+
+    - Instalamos en infrastructure:
+
+        dotnet add package CloudinaryDotNet
+
+    - crear interface en domain 

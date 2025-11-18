@@ -18,17 +18,29 @@ builder.Services.AddInfrastructure(builder.Configuration);
 builder.Services.AddScoped<IPasswordHasher, PasswordHasher>();
 builder.Services.AddScoped<IJwtService, JwtService>();
 builder.Services.AddScoped<ILoginService, LoginService>();
-
+// builder.Services.AddScoped<IPropertyService, PropertyService>();
 // Repositories
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IAdminRepository, AdminRepository>();
-
+// builder.Services.AddScoped<IPropertyRepository, PropertyRepository>();
 // Para el DbContext en LoginService
 builder.Services.AddScoped<DbContext, AppDbContext>();
+
+
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+// CORS: permitir cualquier origen en entorno de desarrollo
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("DevCorsPolicy", policy =>
+    {
+        policy.AllowAnyOrigin()
+            .AllowAnyMethod()
+            .AllowAnyHeader();
+    });
+});
 
 var app = builder.Build();
 
@@ -39,7 +51,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
+
 
 app.UseAuthentication();
 app.UseAuthorization();

@@ -14,14 +14,14 @@ public class AppDbContext : DbContext
     {
         // TPH para User - UNA tabla users con discriminador
         modelBuilder.Entity<User>()
-            .ToTable("users")
+            .ToTable("Users")
             .HasDiscriminator<Role>(u => u.Role)
             .HasValue<Admin>(Role.Admin)
             .HasValue<Client>(Role.Client);
 
         // Tablas separadas para el resto
-        modelBuilder.Entity<Property>().ToTable("properties");
-        modelBuilder.Entity<PropertyImage>().ToTable("property_images");
+        modelBuilder.Entity<Property>().ToTable("Properties");
+        modelBuilder.Entity<PropertyImage>().ToTable("Property_images");
         
         // Configuración de Users
         modelBuilder.Entity<User>(entity =>

@@ -16,7 +16,7 @@ public class AuthController : ControllerBase
         _loginService = loginService;
     }
 
-    [HttpPost("register")]
+    [HttpPost("/api/v1/auth/register")]
     public async Task<IActionResult> Register([FromBody] RegisterRequest request)
     {
         try
@@ -30,7 +30,7 @@ public class AuthController : ControllerBase
         }
     }
 
-    [HttpPost("login")]
+    [HttpPost("/api/v1/auth/login")]
     public async Task<IActionResult> Login([FromBody] LoginRequest request)
     {
         try
